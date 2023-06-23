@@ -1,0 +1,41 @@
+#!/bin/bash
+susanne@susanne-VirtualBox:~$ # Pad naar het oude clientcertificaat
+susanne@susanne-VirtualBox:~$ OLD_CERT_PATH="//Downloads/client-oud.cert.pem"
+susanne@susanne-VirtualBox:~$ # Pad naar het nieuwe clientencertificaat
+susanne@susanne-VirtualBox:~$ NEW_CERT_PATH="/Downloads/client-nieuw.cert.pem"
+susanne@susanne-VirtualBox:~$ # Functie om een bestand of map recursief te doorzoeken en het clientcertificaat te vervangen
+susanne@susanne-VirtualBox:~$ replace_certificate() {
+> local path=$1
+> 
+> if [ -f "$path" ]; then
+> # Bestand gevonden
+> # Controleer of het een tekstbestand is
+> if [[ $(file -b --mime-type "$path") == text/* ]]; then
+> # Maak een tijdelijk bestand aan om het certificaat te vervangen
+> local temp_file=$(mktemp)
+> 
+> # Vervang het clientcertificaat in het bestand
+> awk -v new_cert="$(cat "$NEW_CERT_PATH")" '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE----- { IF ($0 ~ /-----BEGIN CERTIFICATE-----/) print new_cert; next } 1' "$path" > "$temp_file"
+> 
+> # Overschrijf het originele bestand met het bijgewerkte bestand
+> mv "$temp_file" "$path"
+> 
+> echo "Vervangen in bestand: $path"
+> 
+> fi
+> elif [ -d "$path" ]; then
+> # Map gevonden
+> # Doorloop recursief alle bestanden en submappen
+> for file in "$path"/*; do
+> replace_certificate "$file"
+> done
+> fi
+> }
+susanne@susanne-VirtualBox:~$ replace_certificate "Downloads/client-oud.cert.pem"
+cat: /Downloads/client-nieuw.cert.pem: No such file or directory
+awk: line 1: regular expression compile failed (missing ')')
+-----END CERTIFICATE----- { IF ($0 ~ 
+awk: line 1: syntax error at or near --
+awk: line 1: runaway regular expression /) print ne ...
+Vervangen in bestand: Downloads/client-oud.cert.pem
+susanne@susanne-VirtualBox:~$ 
