@@ -1,0 +1,17 @@
+# nested elifs example
+>>> traffic_lights = "green, yellow, red"
+>>> # a string with one color
+>>> light = "purple"  # variable for color name
+>>> if light in traffic_lights:
+...    if light == "green":
+...        print("You can go!")
+...    elif light == "yellow":
+...        print("Get ready!")
+...    else:
+...        # if the lights are red
+...        print("Just wait.")
+... else:
+...    print("No such traffic light color, do whatever you want")
+...
+No such traffic light color, do whatever you want
+>>> light = "red"
