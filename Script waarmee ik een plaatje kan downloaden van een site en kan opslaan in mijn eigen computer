@@ -1,0 +1,56 @@
+~$ #1 python3
+susanne@susanne-VirtualBox:~$ # downloadedXkcd.py - Downloads every single XKCD comic
+susanne@susanne-VirtualBox:~$ python3
+Python 3.10.6 (main, May 29 2023, 11:10:38) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> import requests, os, bs4
+>>> 
+>>> url = 'https://xkcd.com'   # starting url
+>>> os.makedirs('xkcd', exist_ok=True)   # store comics in./xkcd
+>>> while not url.endswith('#'):
+... # Download the page.
+...     print('Download the page.
+  File "<stdin>", line 3
+    print('Download the page.
+          ^
+SyntaxError: unterminated string literal (detected at line 3)
+>>> while not url.endswith('#'):
+...     print('Download the page. %s...' % url)
+...     res = requests.get(url)
+...     res.raise_for_status()
+... 
+Download the page. https://xkcd.com...
+^CTraceback (most recent call last):
+
+>>> soup = bs4.BeautifulSoup(res.text, 'html.parser')
+>>> # Find the URL of the comic image.
+>>> 
+>>> comicElem = soup.select('#comic img')
+>>> if comicElem == []:
+...    print('Downloading image %s...' % (comicUrl))
+... else:
+...    comicUrl = 'https:' + comicElem[0].get('src')
+... # Download the image.
+...    print('Downloading image %s...' % (comicUrl))
+...    res = requests.get(comicUrl)
+...    res.raise_for_status()
+... 
+Downloading image https://imgs.xkcd.com/comics/room_temperature.png...
+>>> 
+>>> # Save the image to ./xkcd.
+>>> imageFile = open(os.path.join('xkcd', os.path.basename(comicUrl)),
+... 'wb')
+>>> for chunk in res.iter_content(100000):
+...    imageFile.write(chunk)
+...    imageFile.close()
+... 
+44690
+>>> 
+>>> # Get the Prev button's url.
+>>> prevLink = soup.select('a[rel="prev"]')[0]
+>>> url = 'https://xkcd.com' + prevLink.get('href')
+>>> 
+>>> print('Done.')
+Done.
+>>> 
