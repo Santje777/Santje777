@@ -1,0 +1,190 @@
+usanne@susanne-VirtualBox:~$ python3 -m pip install --upgrade pip
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in /usr/lib/python3/dist-packages (22.0.2)
+Collecting pip
+  Downloading pip-23.1.2-py3-none-any.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 4.9 MB/s eta 0:00:00
+Installing collected packages: pip
+  WARNING: The scripts pip, pip3 and pip3.10 are installed in '/home/susanne/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-23.1.2
+susanne@susanne-VirtualBox:~$ pip install beautifulsoup4
+Defaulting to user installation because normal site-packages is not writeable
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.12.2-py3-none-any.whl (142 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 143.0/143.0 kB 2.3 MB/s eta 0:00:00
+Collecting soupsieve>1.2 (from beautifulsoup4)
+  Downloading soupsieve-2.4.1-py3-none-any.whl (36 kB)
+Installing collected packages: soupsieve, beautifulsoup4
+Successfully installed beautifulsoup4-4.12.2 soupsieve-2.4.1
+susanne@susanne-VirtualBox:~$ import requests
+Command 'import' not found, but can be installed with:
+sudo apt install graphicsmagick-imagemagick-compat  # version 1.4+really1.3.38-1ubuntu0.1, or
+sudo apt install imagemagick-6.q16                  # version 8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3
+sudo apt install imagemagick-6.q16hdri              # version 8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3
+susanne@susanne-VirtualBox:~$ python3
+Python 3.10.6 (main, May 29 2023, 11:10:38) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> from bs4 import BeautifulSoup
+>>> import random
+>>> 
+>>> # Make a GET request to the Random Bible verse website
+>>> url = "https://dailyverses.net/random-bible-verse"
+>>> response = request.get(url)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'request' is not defined. Did you mean: 'requests'?
+>>> response = requests.get(url)
+>>> 
+>>> # Parse the HTML content using BeautifulSoup
+>>> soup = BeautifulSoup(response.content, "html.parser")
+>>> 
+>>> # Find the quote element on the page
+>>> quote_element = soup.find("div", class_="verse")
+>>> 
+>>> # Extract the quote text
+>>> quote = quote_element.text.strip()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'NoneType' object has no attribute 'text'
+>>> if quote_element is not None:
+...    quote = quote_element.text.strip()
+... else:
+...    quote = 
+  File "<stdin>", line 4
+    quote = 
+            ^
+SyntaxError: invalid syntax
+>>> else:
+  File "<stdin>", line 1
+    else:
+    ^^^^
+SyntaxError: invalid syntax
+>>> if quote_element is not None:
+...    quote = quote_element.text.strip()
+... else:
+...    quote = "Quote not found"
+... 
+>>> quote = quote_element.text.strip()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'NoneType' object has no attribute 'text'
+>>> 
+>>> # Email details
+>>> sender_email = "s.v.oosterom@gmail.com"
+>>> receiver_email = "s.v.oosterom@gmail.com"
+>>> password = "MIJN WACHTWOORD"
+>>> 
+>>> # Connect to the SMTP server
+>>> smtp_server = "smtp.gmail.com"
+>>> smtp_port = 587
+>>> server = smtplib.SMTP(smtp_server, smtp_port)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'smtplib' is not defined
+>>> server = smtplib.SMTP(smtp_server, smtp_port)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'smtplib' is not defined
+>>> server.starttls()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'server' is not defined
+>>> import smtplib
+>>> 
+>>> # SMTP details
+>>> smtp_server = "smtp.susanne.com"
+>>> smtp_port = 777
+>>> smtp_username = "susanne"
+>>> smtp_password = "MIJN WACHTWOORD HIER"
+>>> 
+>>> Create SMTP server object
+  File "<stdin>", line 1
+    Create SMTP server object
+           ^^^^
+SyntaxError: invalid syntax
+>>> # Create SMTP server object
+>>> server = smtplib.SMTP(smtp_server, smtp_port)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/lib/python3.10/socket.py", line 824, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+>>> 
+>>> import smtplib
+>>> import random
+>>> 
+>>> import requests
+>>> from bs4 import BeautifulSoup
+>>> import random
+>>> 
+>>> # Make a Get request to the website
+>>> url = "https://dailyverses.net/random-bible-verse"
+>>> response = requests.get(url)
+>>> 
+>>> # Parse the HTML content using BeautifulSoup
+>>> soup = BeautifulSoup(response.content, "html.parser")
+>>> 
+>>> # Find the quote element on the page
+>>> quote_element = soup.find("div", class_="verse")
+>>> 
+>>> # Extract the quote text
+>>> quote = quote_element.text.strip()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'NoneType' object has no attribute 'text'
+>>> if quote_element is not None:
+...    quote = quote_element.text.strip()
+... else:
+...    quote = "Quote not found"
+... 
+>>> # Email details
+>>> sender_email = "s.v.oosterom@gmail.com"
+>>> receiver_email = "s.v.oosterom@gmail.com"
+>>> password = "HIER MIJN WACHTWOORD"
+>>> 
+>>> # Connect to the SMTP server
+>>> smtp_server = "smtp.gmail.com"
+>>> smtp_port = 587
+>>> server = smtplib.SMTP(smtp_server, smtp_port)
+>>> server.starttls()
+(220, b'2.0.0 Ready to start TLS')
+>>> 
+>>> # Login to your email account
+>>> server.login(sender_email, password)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.10/smtplib.py", line 750, in login
+    raise last_exception
+  File "/usr/lib/python3.10/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+  File "/usr/lib/python3.10/smtplib.py", line 662, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials f6-20020aa7d846000000b0051df5eefa20sm5346971eds.76 - gsmtp')
+>>> 
+>>> # Compose the email
+>>> subject = "Dagelijkse Bijbelvers"
+>>> body = quote
+>>> message = f"Subject: {subject}\n\n{body}"
+>>> 
+>>> # Send the email
+>>> server.sendmail(sender_email, receiver_email, message)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/lib/python3.10/smtplib.py", line 887, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.7.0 Authentication Required. Learn more at\n5.7.0  https://support.google.com/mail/?p=WantAuthError f6-20020aa7d846000000b0051df5eefa20sm5346971eds.76 - gsmtp', 's.v.oosterom@gmail.com')
+>>> # Disconnect from the server
+>>> server.quit()
+(221, b'2.0.0 closing connection f6-20020aa7d846000000b0051df5eefa20sm5346971eds.76 - gsmtp')
+>>> 
+
