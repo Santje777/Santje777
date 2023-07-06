@@ -1,0 +1,71 @@
+ python3
+Python 3.10.6 (main, May 29 2023, 11:10:38) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import smtplib
+>>> random
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'random' is not defined
+>>> import random
+>>> from datetime import datetime
+>>> from email.mime.text import MIMEText
+>>> email.mime.multipart import MIMEMultipart
+  File "<stdin>", line 1
+    email.mime.multipart import MIMEMultipart
+                         ^^^^^^
+SyntaxError: invalid syntax
+>>> from email.mime.multipart import MIMEMultipart
+>>> 
+>>> #SMTP details
+>>> smtp_server = "smtp.susanne.com"
+>>> smtp_port = 587
+>>> smtp_username = susanne
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'susanne' is not defined
+>>> smtp_username = "susanne"
+>>> smtp_password = "MIJN WACHTWOORD, HIER FF ANDERS"
+>>> 
+>>> # Function to get a radom Bible verse
+>>> def get_random_bible_verses():
+...     bible_verses = [
+...          'But I have been the Lord your God ever since you came out of Egypt. YOu shall acknowledge no God but me, no Savior except me. Hosea 13:4'
+...          'Preach the word; be prepared in season and out of season; correct, rebuke and encourage with great patience and careful instruction. 2 Timothy 4:2']
+...     return random.choice(bible_verses)
+... 
+>>> # Create the email message
+>>> message = MIMEMultipart()
+>>> message["From"] = "susanne@teamalyx.com"
+>>> message["To"] = "susanne@teamalyx.com"
+>>> message["Subject"] = Dagelijks een van de twee Bijbelverzen YOLO
+  File "<stdin>", line 1
+    message["Subject"] = Dagelijks een van de twee Bijbelverzen YOLO
+                                   ^^^
+SyntaxError: invalid syntax
+>>> message["Subject"] = "Dagelijks een van de twee Bijbelverzen YOLO"
+>>> 
+>>> # Get a random Bible verse
+>>> verse = get_random_bible_verse()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'get_random_bible_verse' is not defined. Did you mean: 'get_random_bible_verses'?
+>>> verse = get_random_bible_verses()
+>>> 
+>>> # Attach the verse to the email
+>>> body = MIMEText(verse, "plain")
+>>> message.attach(body)
+>>> 
+>>> # Check if it's a weekday and the current time is 8:00 uur
+>>> now = datetime.now()
+>>> if now.weekday() < 5 and now.hour == 8:
+... 
+  File "<stdin>", line 2
+    
+    ^
+IndentationError: expected an indented block after 'if' statement on line 1
+>>> if now.weekday() < 5 and now.hour == 8:
+...    with smtplib.SMTP(smtp_server, smtp_port) as server:
+...        server.starttls()
+...        server.login(smtp_username, smtp_password)
+...        server.send_message(message)
+
