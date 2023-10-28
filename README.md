@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Santje777
-- 👀 I’m interested in IT Infrastructure
-- 🌱 I’m currently learning a lot about programming XD
-- 💞️ I’m looking to collaborate on Back-end development
+- 👀 I’m interested in IT 
+- 🌱 I’m currently learning a lot about Javascript
+- 💞️ I’m looking to collaborate on Front-end development
 - 📫 How to reach me: via this profile XD
 
 
